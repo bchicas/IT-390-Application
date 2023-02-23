@@ -1,0 +1,43 @@
+<head>
+	<link rel="stylesheet" href="book_index_style.css" type="text/css" />
+	<title> BookWorm </title>
+	</head>
+<body>
+	<div id="container">
+	  <header>
+	  <div>
+		<img src="Bookworm_logo.png" alt="Logo for Bookworm">
+		</div>
+	  </header>
+	  <div id="navbar" >
+		<ul>
+			<li> <a href="book_index.html">Home</a> </li>
+			<li> <a href="blind_books.html">Blind Books</a> </li>
+		</ul>
+	  </div>
+	  <div id="content">
+		<div> <strong> Why use BookWorm? </strong> <br />
+			<p> Reading a great book that one enjoys all the way through doesn't happen all the time, and, especially for those starting out, it can be difficult to know where to look to find one. This is where BookWorm comes in; it's an application that can help you find the perfect book to get back into reading, whether you're young or old, there are books out there for all kinds of people! </p>
+		 <strong> Genres </strong> <br />
+			<p> Get started looking at the books we have under these genres:<br>
+					<button onclick="bookgenre1()">Classics</button> 
+					<button onclick="bookgenre2()">Comedy</button>
+					<button onclick="bookgenre3()">Fantasy</button>
+			 </p>
+		</div>
+		<script>
+		function bookgenre1() {
+			alert("Alice in Wonderland, <br>Journey to the Center of the Earth, <br>1984");
+		}
+		function bookgenre2() {
+			alert("The Hitch-hiker's Guide to the Galaxy");
+		}
+		function bookTitle3() {
+			alert("Alice in Wonderland,<br> Harry Potter");
+		}
+		</script>
+	  </div>
+	  <footer>Copyright Team 4 2023 | This page does not gather any personal information</footer>
+	</div>
+</body>
+</html>
