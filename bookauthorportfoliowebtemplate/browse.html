@@ -1,111 +1,128 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <!-- Website Template by freewebsitetemplates.com -->
 <script>
-	function getbooks(){
-		document.getElementById('output').innerHTML="";
-		fetch("http://openlibrary.org/search.json?q="+document.getElementById("input").value).then(a=> a.json()).then(response =>{
-			for(var i=0; i<10; i++){
-			document.getElementById("output").innerHTML+="<h2>"+response.docs[i].title+"</h2>"+response.docs[i].author_name[0]+
-			"<br><img src='http://covers.openlibrary.org/b/isbn/"+response.docs[i].isbn[0]+"-M.jpg'><br>";
-		}
-		 });
-	}
-	function getRandomText() {
-	  const textList = [
-		'love',
-		'fantasy',
-		'war',
-		'mystery',
-		'horror',
-		'children',
-		'classics',
-		'sci-fi',
-		'poems',
-		'biographies',
-		'cook',
-	  ];
-	  const randomIndex = Math.floor(Math.random() * textList.length);
-	  return textList[randomIndex];
-	}
+  function getbooks() {
+    document.getElementById("output").innerHTML = "";
+    fetch(
+      "http://openlibrary.org/search.json?q=" +
+        document.getElementById("input").value
+    )
+      .then((a) => a.json())
+      .then((response) => {
+        for (var i = 0; i < 10; i++) {
+          document.getElementById("output").innerHTML +=
+            "<h2>" +
+            response.docs[i].title +
+            "</h2>" +
+            response.docs[i].author_name[0] +
+            "<br><img src='http://covers.openlibrary.org/b/isbn/" +
+            response.docs[i].isbn[0] +
+            "-M.jpg'><br>";
+        }
+      });
+  }
+  function getRandomText() {
+    const textList = [
+      "love",
+      "fantasy",
+      "war",
+      "mystery",
+      "horror",
+      "children",
+      "classics",
+      "sci-fi",
+      "poems",
+      "biographies",
+      "cook",
+    ];
+    const randomIndex = Math.floor(Math.random() * textList.length);
+    return textList[randomIndex];
+  }
 </script>
 <!--credits to Cukmekerb's Coding Class on YT for getbooks function-->
 <html>
-<head>
-	<meta charset="UTF-8">
-	<title>Browse Books</title>
-	<link rel="stylesheet" href="css/style.css" type="text/css">
-</head>
-<body>
-	<div id="page">
-		<div id="header">
-			<a href="index.html" class="logo"><img src="images/logo.png" alt=""></a>
-			<div class="navigation">
-				<ul class="primary">
-					<li>
-						<a href="index.html">home</a>
-					</li>
-					<li>
-						<a href="about.html">about</a>
-					</li>
-				</ul>
-				<ul class="secondary">
-					<li>
-						<a href="books.html">books</a>
-					</li>
-					<li class="selected">
-						<a href="blog.html">blog</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-		<div id="body">
-			<div class="content">
-				<div class="section" style="justify-content: center;">
-						<input id="input">
-						<button onclick="getbooks()">Looking For A Book?:</button><br>
-						<div id="output">
-						<ul id="books-list"></ul>
-						<script>
-						  let subject = getRandomText();
+  <head>
+    <meta charset="UTF-8" />
+    <title>Browse Books</title>
+    <link rel="stylesheet" href="css/style.css" type="text/css" />
+  </head>
+  <body>
+    <div id="page">
+      <div id="header">
+        <a href="index.html" class="logo"
+          ><img src="images/logo.png" alt=""
+        /></a>
+        <div class="navigation">
+          <ul class="primary">
+            <li>
+              <a href="index.html">home</a>
+            </li>
+            <li>
+              <a href="about.html">about</a>
+            </li>
+          </ul>
+          <ul class="secondary">
+            <li>
+              <a href="books.html">books</a>
+            </li>
+            <li class="selected">
+              <a href="blog.html">blog</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div id="body">
+        <div class="content">
+          <div class="section" style="justify-content: center">
+            <input id="input" />
+            <button onclick="getbooks()">Looking For A Book?:</button><br />
+            <div id="output">
+              <ul id="books-list"></ul>
+              <script>
+                let subject = getRandomText();
 
-						  fetch("https://openlibrary.org/subjects/"+subject+".json?limit=20")
-							.then(response => response.json())
-							.then(data => {
-							  const books = data.works;
-							  const booksList = document.getElementById("books-list");
-							  
-							  books.forEach(book => {
-								const bookItem = document.createElement("li");
-								bookItem.innerHTML = `
+                fetch(
+                  "https://openlibrary.org/subjects/" +
+                    subject +
+                    ".json?limit=20"
+                )
+                  .then((response) => response.json())
+                  .then((data) => {
+                    const books = data.works;
+                    const booksList = document.getElementById("books-list");
+
+                    books.forEach((book) => {
+                      const bookItem = document.createElement("li");
+                      bookItem.innerHTML = `
 								  <h2>${book.title}</h2>
-								  <p>Author(s): ${book.authors.map(author => author.name).join(', ')}</p>
+								  <p>Author(s): ${book.authors.map((author) => author.name).join(", ")}</p>
 								  <p>Published year: ${book.first_publish_year}</p>
 								`;
-								booksList.appendChild(bookItem);
-							  });
-							})
-							.catch(error => console.log(error));
-						</script>
-						</div>
-				</div>
-			</div>
-		</div>
-		<div id="footer">
-			<ul>
-				<li class="twitter">
-					<a href="http://freewebsitetemplates.com/go/twitter/">twitter</a>
-				</li>
-				<li class="facebook">
-					<a href="http://freewebsitetemplates.com/go/facebook/">facebook</a>
-				</li>
-				<li class="googleplus">
-					<a href="http://freewebsitetemplates.com/go/googleplus/">googleplus</a>
-				</li>
-			</ul>
-			<p>
-				&copy; Copyright 2012. All rights reserved
-			</p>
-		</div>
-	</div>
-</body>
+                      booksList.appendChild(bookItem);
+                    });
+                  })
+                  .catch((error) => console.log(error));
+              </script>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="footer">
+        <ul>
+          <li class="twitter">
+            <a href="http://freewebsitetemplates.com/go/twitter/">twitter</a>
+          </li>
+          <li class="facebook">
+            <a href="http://freewebsitetemplates.com/go/facebook/">facebook</a>
+          </li>
+          <li class="googleplus">
+            <a href="http://freewebsitetemplates.com/go/googleplus/"
+              >googleplus</a
+            >
+          </li>
+        </ul>
+        <p>&copy; Copyright 2012. All rights reserved</p>
+      </div>
+    </div>
+  </body>
 </html>
