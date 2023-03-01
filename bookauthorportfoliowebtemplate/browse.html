@@ -95,7 +95,7 @@
                       const bookItem = document.createElement("li");
                       bookItem.innerHTML = `
 								  <h2>${book.title}</h2>
-								  <p>Author(s): ${book.authors.map((author) => author.name).join(", ")}</p>
+								  <p>Author(s): ${book.authors.map((author) => author.name[0])}</p>
 								  <p>Published year: ${book.first_publish_year}</p>
 								`;
                       booksList.appendChild(bookItem);
