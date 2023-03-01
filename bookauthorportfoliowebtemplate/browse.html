@@ -10,6 +10,23 @@
 		}
 		 });
 	}
+	function getRandomText() {
+	  const textList = [
+		'love',
+		'fantasy',
+		'war',
+		'mystery',
+		'horror',
+		'children',
+		'classics',
+		'sci-fi',
+		'poems',
+		'biographies',
+		'cook',
+	  ];
+	  const randomIndex = Math.floor(Math.random() * textList.length);
+	  return textList[randomIndex];
+	}
 </script>
 <!--credits to Cukmekerb's Coding Class-->
 <html>
@@ -46,7 +63,31 @@
 				<div class="section" style="justify-content: center;">
 						<input id="input">
 						<button onclick="getbooks()">Looking For A Book?:</button><br>
-						<div id="output"></div>
+						<div id="output">
+						<ul id="books-list"></ul>
+						<script>
+						  let subject = getRandomText();
+
+						  fetch("https://openlibrary.org/subjects/"+subject+".json?limit=20")
+							.then(response => response.json())
+							.then(data => {
+							  const books = data.works;
+							  const booksList = document.getElementById("books-list");
+							  
+							  books.forEach(book => {
+								const bookItem = document.createElement("li");
+								bookItem.innerHTML = `
+								  <h2>${book.title}</h2>
+								  <p>Author(s): ${book.authors.map(author => author.name).join(', ')}</p>
+								  <p>Published year: ${book.first_publish_year}</p>
+								  <p>Subjects: ${book.subject.join(', ')}</p>
+								`;
+								booksList.appendChild(bookItem);
+							  });
+							})
+							.catch(error => console.log(error));
+						</script>
+						</div>
 				</div>
 			</div>
 		</div>
