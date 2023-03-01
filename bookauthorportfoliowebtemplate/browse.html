@@ -32,11 +32,24 @@
 		<div id="body">
 			<div class="content">
 				<div class="section" style="justify-content: center;">
-					<p>
-						<p>Looking for a book?:</p>
-
-
-					</p>
+					<script>
+						function getbooks(){
+							document.getElementById('output').innerHTML="";
+							fetch("http://openlibrary.org/search.json?q="
+							+document.getElementById("input").value)
+							.then(a=> a.json())
+							.then(response =>{
+							for(var i=0; i<10; i++)	{
+								document.getElementById("output").innerHTML+="<h2>"
+									+response.docsi[i].title+"</h2>"+response.docs[i].author_name[0]
+									+"<br><img src='http://covers.openlibrary.org/b/isbn/"+response.docs[i].isbn[0]+"-M.jpg'><br>";
+							}
+							 });
+						}
+					</script>
+						<input id="input">
+						<button onclick="getbooks()">Looking For A Book?:</button><br>
+						<div id="output"></div>
 				</div>
 			</div>
 		</div>
