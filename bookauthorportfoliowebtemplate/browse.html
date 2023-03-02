@@ -94,7 +94,7 @@
                     books.forEach((book) => {
                       const bookItem = document.createElement("li");
                       bookItem.innerHTML = `
-								  <h4>${book.title}</h4>
+								  <h3>${book.title}</h3>
 								  <p>Author(s): ${book.authors.map((author) => author.name).join(", ")}</p>
 								  <p>Published year: ${book.first_publish_year}</p>
 								`;
