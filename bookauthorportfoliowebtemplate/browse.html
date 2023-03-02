@@ -9,7 +9,7 @@
     )
       .then((a) => a.json())
       .then((response) => {
-        for (var i = 0; i < 10; i++) {
+        for (var i = 0; i < 8; i++) {
           document.getElementById("output").innerHTML +=
             "<h3>" +
             response.docs[i].title +
@@ -30,9 +30,9 @@
       "horror",
       "children",
       "classics",
-      "sci-fi",
+      "science",
       "poems",
-      "biographies",
+      "biography",
       "cook",
     ];
     const randomIndex = Math.floor(Math.random() * textList.length);
@@ -50,7 +50,7 @@
     <div id="page">
       <div id="header">
         <a href="index.html" class="logo"
-          ><img src="images/logo.png" alt=""
+          ><img src="images/bookworm.png" alt=""
         /></a>
         <div class="navigation">
           <ul class="primary">
@@ -63,7 +63,7 @@
           </ul>
           <ul class="secondary">
             <li>
-              <a href="browse.html">books</a>
+              <a href="browse.html">browse</a>
             </li>
             <li class="selected">
               <a href="signIn-Up.html">blog</a>
@@ -92,7 +92,7 @@
                     const booksList = document.getElementById("books-list");
 
                     books.forEach((book) => {
-                      const bookItem = document.createElement("li");
+                      const bookItem = document.createElement("ul");
                       bookItem.innerHTML = `
 								  <h3>${book.title}</h3>
 								  <p>Author(s): ${book.authors.map((author) => author.name).join(", ")}</p>
