@@ -63,7 +63,7 @@
           </ul>
           <ul class="secondary">
             <li>
-              <a href="browse.html">books</a>
+              <a href="browse.html">browse</a>
             </li>
             <li class="selected">
               <a href="signIn-Up.html">blog</a>
@@ -92,7 +92,7 @@
                     const booksList = document.getElementById("books-list");
 
                     books.forEach((book) => {
-                      const bookItem = document.createElement("li");
+                      const bookItem = document.createElement("ul");
                       bookItem.innerHTML = `
 								  <h3>${book.title}</h3>
 								  <p>Author(s): ${book.authors.map((author) => author.name).join(", ")}</p>
