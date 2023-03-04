@@ -14,7 +14,12 @@
             "<h3>" +
             response.docs[i].title +
             "</h3>" +
+            "<p>Author(s): "+
             response.docs[i].author_name[0] +
+            "</p>"+
+            "<p>Published Year: "+
+            response.docs[i].first_publish_year +
+            "</p>"+
             "<br><img src='http://covers.openlibrary.org/b/isbn/" +
             response.docs[i].isbn[0] +
             "-M.jpg'><br>";
@@ -95,8 +100,9 @@
                       const bookItem = document.createElement("ul");
                       bookItem.innerHTML = `
 								  <h3>${book.title}</h3>
-								  <p>Author(s): ${book.authors.map((author) => author.name).join(", ")}</p>
+								  <p>Author(s): ${book.authors[0].name}</p>
 								  <p>Published year: ${book.first_publish_year}</p>
+                  <img src="https://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg" alt="Book cover">
 								`;
                       booksList.appendChild(bookItem);
                     });
