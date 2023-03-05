@@ -11,7 +11,7 @@
       .then((response) => {
         for (var i = 0; i < 8; i++) {
           document.getElementById("output").innerHTML +=
-            "<ul>" +
+          "<ul class='book-item'>" +
             "<h3>" +
             response.docs[i].title +
             "</h3>" +
@@ -99,6 +99,7 @@
 
                     books.forEach((book) => {
                       const bookItem = document.createElement("ul");
+                      bookItem.style.border = "1px solid black";
                       bookItem.innerHTML = `
 								  <h3>${book.title}</h3>
 								  <p>Author(s): ${book.authors[0].name}</p>
