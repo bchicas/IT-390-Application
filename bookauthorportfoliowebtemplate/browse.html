@@ -2,45 +2,45 @@
 <!-- Website Template by freewebsitetemplates.com -->
 <script>
   function getbooks() {
-    document.getElementById("output").innerHTML = "";
-    fetch(
-      "http://openlibrary.org/search.json?q=" +
-        document.getElementById("input").value
-    )
-      .then((a) => a.json())
-      .then((response) => {
-        for (var i = 0; i < 8; i++) {
-          var bookCoverId = response.docs[i].cover_edition_key; // get the cover edition key
-          document.getElementById("output").innerHTML +=
-            "<ul class='book-item'>" +
-              "<h3>" +
-              response.docs[i].title +
-              "</h3>" +
-              "<p>Author(s): "+
-              response.docs[i].author_name[0] +
-              "</p>"+
-              "<p>Published Year: "+
-              response.docs[i].first_publish_year +
-              "</p>"+
-              "<br><img src='http://covers.openlibrary.org/b/olid/" +
-              bookCoverId +
-              "-M.jpg'><br>";
-        }
-      });
-  }
+      document.getElementById("output").innerHTML = "";
+      fetch(
+        "http://openlibrary.org/search.json?q=" +
+          document.getElementById("input").value
+      )
+        .then((a) => a.json())
+        .then((response) => {
+          for (var i = 0; i < 8; i++) {
+            var bookCoverId = response.docs[i].cover_edition_key;
+            document.getElementById("output").innerHTML +=
+              "<ul class='book-item'>" +
+                "<h3>" +
+                response.docs[i].title +
+                "</h3>" +
+                "<p>Author(s): "+
+                response.docs[i].author_name[0] +
+                "</p>"+
+                "<p>Published Year: "+
+                response.docs[i].first_publish_year +
+                "</p>"+
+                "<br><img src='http://covers.openlibrary.org/b/olid/" +
+                bookCoverId +
+                "-M.jpg'><br>";
+          }
+        });
+    }
+
   function getRandomText() {
     const textList = [
-      "love",
+      "romance",
       "fantasy",
-      "war",
+      "history",
       "mystery",
       "horror",
       "children",
-      "classics",
+      "classic",
       "science",
       "poems",
       "biography",
-      "cook",
     ];
     const randomIndex = Math.floor(Math.random() * textList.length);
     return textList[randomIndex];
@@ -83,11 +83,14 @@
           <div class="section" style="justify-content: center">
             <button onclick="getbooks()">Looking For A Book?</button>
             <input id="input" /><br />
+            <h1><span id="subject"></span> Books</h1>
             <div id="output">
               <ul id="books-list"></ul>
               <script>
-                let subject = getRandomText();
-
+                  let subject = getRandomText();
+                  const subjectElement = document.getElementById("subject");
+                  const capitalizedSubject = subject.charAt(0).toUpperCase() + subject.slice(1);
+                  subjectElement.textContent = capitalizedSubject;
                 fetch(
                   "https://openlibrary.org/subjects/" +
                     subject +
