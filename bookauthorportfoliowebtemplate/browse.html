@@ -82,9 +82,9 @@
         <div class="content">
           <div class="section" style="justify-content: center">
             <button onclick="getbooks()">Looking For A Book?</button>
-            <input id="input" /><br />
-            <h1><span id="subject"></span> Books</h1>
+            <input id="input" onkeyup="if (event.keyCode === 13) getbooks()" /><br />
             <div id="output">
+              <h1><span id="subject"></span> Books</h1>
               <ul id="books-list"></ul>
               <script>
                   let subject = getRandomText();
