@@ -23,8 +23,7 @@
             "</p>"+
             "<br><img src='http://covers.openlibrary.org/b/isbn/" +
             response.docs[i].isbn[0] +
-            "-M.jpg' onerror='handleImageError(this)'><br>";
-
+            "-M.jpg' onerror='this.src=\"No_Cover.jpg\"'><br>";
         }
       });
   }
@@ -45,12 +44,6 @@
     const randomIndex = Math.floor(Math.random() * textList.length);
     return textList[randomIndex];
   }
-  function handleImageError(image) {
-  image.onerror = "";
-  image.src = "No_Cover.jpg"; // replace with the path to your no-image-found image or text
-  return true;
-}
-
 </script>
 <!--credits to Cukmekerb's Coding Class on YT for getbooks function-->
 <html>
