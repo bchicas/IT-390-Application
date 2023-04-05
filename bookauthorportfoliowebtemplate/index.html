@@ -67,28 +67,74 @@
         <div class="body">
           <div class="bookdisplay">
             <h2><a href="browse.html">recommended for you</a></h2>
-            <ul>
-              <li>
-                <a href="ViewABook.html"
-                  ><img src="images/happy-days.jpg" alt=""
-                /></a>
-              </li>
-              <li>
-                <a href="ViewABook.html"
-                  ><img src="images/tourist.jpg" alt=""
-                /></a>
-              </li>
-              <li>
-                <a href="ViewABook.html"
-                  ><img src="images/out-fairytale.jpg" alt=""
-                /></a>
-              </li>
-              <li>
-                <a href="ViewABook.html"
-                  ><img src="images/philip.jpg" alt=""
-                /></a>
-              </li>
-            </ul>
+            <ul id="recommendedBooksList"></ul>
+
+            <script>
+              // User's favorite genre
+              const userGenre = "Fiction";
+
+              // Function to get book recommendations based on user's favorite genre
+              function getRecommendations() {
+                const recommendedBooks = [];
+                const apiUrl = `https://openlibrary.org/subjects/${userGenre.toLowerCase()}.json?limit=4`; // API endpoint for genre-based books
+                fetch(apiUrl)
+                  .then((response) => response.json())
+                  .then((data) => {
+                    const books = data.works;
+                    for (let i = 0; i < books.length; i++) {
+                      const title = books[i].title;
+                      const coverId = books[i].cover_id;
+                      const coverUrl = `https://covers.openlibrary.org/b/id/${coverId}-M.jpg`; // Book cover image URL
+                      recommendedBooks.push({ title, coverUrl }); // Store title and coverUrl as an object
+                    }
+                    displayRecommendations(recommendedBooks); // Call displayRecommendations() with the array of recommended books
+                  })
+                  .catch((error) => console.error("Error:", error));
+              }
+
+              // Function to display book recommendations with cover images
+              // Function to display book recommendations with cover images and titles
+              function displayRecommendations(recommendedBooks) {
+                const recommendedBooksList = document.getElementById(
+                  "recommendedBooksList"
+                ); // Get the <ul> element
+                recommendedBooks.forEach((book) => {
+                  const listItem = document.createElement("li");
+                  const link = document.createElement("a");
+                  const img = document.createElement("img");
+                  const title = book.title;
+
+                  // Split the title at space characters
+                  const words = title.split(/\s+/);
+
+                  // Check the length of each word and append to DOM
+                  let line1 = "";
+                  let line2 = "";
+                  for (let i = 0; i < words.length; i++) {
+                    if ((line1 + words[i]).length <= 15) {
+                      line1 += words[i] + " ";
+                    } else {
+                      line2 += words[i] + " ";
+                    }
+                  }
+
+                  // Create two lines for the title using <br> element
+                  const titleElement = document.createElement("h4");
+                  titleElement.innerHTML = line1.trim() + "<br>" + line2.trim();
+
+                  link.href = "ViewABook.html";
+                  img.src = book.coverUrl;
+                  img.alt = "";
+                  link.appendChild(img);
+                  listItem.appendChild(link);
+                  listItem.appendChild(titleElement); // Append title element
+                  recommendedBooksList.appendChild(listItem);
+                });
+              }
+
+              // Get book recommendations for the user
+              getRecommendations();
+            </script>
           </div>
         </div>
       </div>
