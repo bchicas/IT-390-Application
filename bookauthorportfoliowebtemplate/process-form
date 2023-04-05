@@ -1,7 +1,7 @@
 <?php
 $servername = "helios.vse.gmu.edu";
 $username = "jviscal";
-$password = "xyz";
+$password = "boogroaz";
 $dbname = "bookworm";
 
 // Create connection
