@@ -53,33 +53,17 @@
 					<p>
 						<p>Making a new account? Sign up here:</p>
 
-						<form id="process-form.php" action="/action_page.php">
+						<form id="frm2" method="post" action="process-form.php">
   						New Username: <input type="text" name="user"><br><br>
 						Email:     <input type="text" name="email"><br><br>
 						New Password: <input type="password" name="pass1"><br><br>
 						Re-enter Password: <input type="password" name="pass2"><br><br>
  						 <input type="button" onclick="signUp()" value="Sign Up">
-						<?php
-						$username = $_POST['user'];
-						$email = $_POST['email'];
-						$password = $_POST['password'];
-
-						$sql = "INSERT INTO accounts (name, email, message) VALUES ('$name', '$email', '$password')";
-
-						if ($conn->query($sql) === TRUE) {
-  						  echo "Data inserted successfully!";
-						} else {
- 						   echo "Error: " . $sql . "<br>" . $conn->error;
-						}
-
-						$conn->close();
-						?>
-
 						</form>
 
 						<script>
 							function signUp() {
-  							document.getElementById("process-form.php").submit();
+  							document.getElementById("frm2.php").submit();
 								}
 						</script>	
 					</p>
