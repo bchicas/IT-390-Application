@@ -3,9 +3,11 @@
                         $username = $_POST['user'];
 						$email = $_POST['email'];
 						$password = $_POST['pass1'];
-
+						$password2 = $_POST['pass2'];
+						if($password == $password2){
 						$sql = "INSERT INTO accounts (name, email, message) VALUES ('$name', '$email', '$password')";
-
+						}
+						else{echo "Passwords do not match!";}
 						if ($conn->query($sql) === TRUE) {
   						  echo "Data inserted successfully!";
 						} else {
