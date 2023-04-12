@@ -29,22 +29,25 @@
               <a href="#" onclick="signInWithGoogle()">Sign In/Up</a>
             </li>
           </ul>
-          <script type="module">
-            // Import the functions you need from the SDKs you need
-            import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
-            import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-analytics.js";
-            import {
-              getAuth,
-              signInWithPopup,
-              GoogleAuthProvider,
-            } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js";
-            // TODO: Add SDKs for Firebase products that you want to use
-            // https://firebase.google.com/docs/web/setup#available-libraries
+        </div>
+      </div>
+    </div>
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-analytics.js";
+      import {
+        getAuth,
+        signInWithPopup,
+        GoogleAuthProvider,
+      } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
 
-            // Your web app's Firebase configuration
-            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-            const firebaseConfig = {
-              apiKey: "AIzaSyCL5XSNiNJ6rZBora7WfhlecToSJO8p8Mo",
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyCL5XSNiNJ6rZBora7WfhlecToSJO8p8Mo",
               authDomain: "bookworm-12345.firebaseapp.com",
               projectId: "bookworm-12345",
               storageBucket: "bookworm-12345.appspot.com",
@@ -53,29 +56,28 @@
               measurementId: "G-BSDLSJYQC7",
             };
 
-            // Initialize Firebase
-            const app = initializeApp(firebaseConfig);
-            const analytics = getAnalytics(app);
-            const auth = getAuth(app);
-            const provider = new GoogleAuthProvider();
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+      const auth = getAuth(app);
+      const provider = new GoogleAuthProvider();
 
-            function signInWithGoogle() {
-              signInWithPopup(auth, provider)
-                .then((result) => {
-                  // This gives you a Google Access Token. You can use it to access the Google API.
-                  const credential =
-                    GoogleAuthProvider.credentialFromResult(result);
-                  const token = credential.accessToken;
-                  // The signed-in user info.
-                  const user = result.user;
-                  // Redirect the user to the home page
-                  window.location.href = "index.html";
-                })
-                .catch((error) => {
-                  // Handle Errors here.
-                  const errorCode = error.code;
-                  const errorMessage = error.message;
-                  // The email of the user's account used.
+      function signInWithGoogle() {
+        signInWithPopup(auth, provider)
+          .then((result) => {
+            // This gives you a Google Access Token. You can use it to access the Google API.
+            const credential = GoogleAuthProvider.credentialFromResult(result);
+            const token = credential.accessToken;
+            // The signed-in user info.
+            const user = result.user;
+            // Redirect the user to the home page
+            window.location.href = "index.html";
+          })
+          .catch((error) => {
+            // Handle Errors here.
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            // The email of the user's account used.
                   const email = error.customData.email;
                   // The AuthCredential type that was used.
                   const credential =
@@ -84,8 +86,6 @@
                 });
             }
           </script>
-        </div>
-      </div>
       <div id="body">
         <div class="header">
           <img src="images/welcome.png" alt="" />
