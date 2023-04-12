@@ -11,9 +11,10 @@
       // Import the functions you need from the SDKs you need
       import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
       import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-analytics.js";
+      import { getAuth } from "firebase/auth";
       // TODO: Add SDKs for Firebase products that you want to use
       // https://firebase.google.com/docs/web/setup#available-libraries
-    
+
       // Your web app's Firebase configuration
       // For Firebase JS SDK v7.20.0 and later, measurementId is optional
       const firebaseConfig = {
@@ -23,12 +24,13 @@
         storageBucket: "bookworm-12345.appspot.com",
         messagingSenderId: "1015960933719",
         appId: "1:1015960933719:web:a6e9de27a3d48f3b91da12",
-        measurementId: "G-BSDLSJYQC7"
+        measurementId: "G-BSDLSJYQC7",
       };
-    
+
       // Initialize Firebase
       const app = initializeApp(firebaseConfig);
       const analytics = getAnalytics(app);
+      const auth = getAuth(app);
     </script>
     <div id="page">
       <div id="header">
@@ -48,8 +50,8 @@
             <li>
               <a href="browse.html">browse</a>
             </li>
-            <li>
-              <a href="signIn-Up.html">Sign In/Up</a>
+            <li id="signInLink">
+              <a href="#" onclick="signInWithGoogle()">Sign In/Up</a>
             </li>
           </ul>
         </div>
