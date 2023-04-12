@@ -12,10 +12,32 @@
         <a href="index.html" class="logo"
           ><img src="images/bookworm.png" alt=""
         /></a>
+        <div class="navigation">
+            <ul class="primary">
+              <li class="selected">
+                <a href="index.html">home</a>
+              </li>
+              <li>
+                <a href="about.html">about</a>
+              </li>
+            </ul>
+            <ul class="secondary">
+              <li>
+                <a href="browse.html">browse</a>
+              </li>
+              <li>
+                <a href="signin.html">sign in</a>
+              </li>
+            </ul>
+          </div>
       </div>
       <div id="body">
         <div class="content">
           <div class="section" style="justify-content: center">
+            <div id="user-info">
+              <p>Welcome, <span id="user-name"></span>!</p>
+              <p>Your email is: <span id="user-email"></span></p>
+            </div>
             <script type="module">
               // Import the functions you need from the SDKs you need
               import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
@@ -24,7 +46,7 @@
                 getAuth,
                 signInWithPopup,
                 GoogleAuthProvider,
-              } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-analytics.js";
+              } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js";
               // TODO: Add SDKs for Firebase products that you want to use
               // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -55,6 +77,10 @@
                   const user = result.user;
                   // IdP data available using getAdditionalUserInfo(result)
                   // ...
+                  document.getElementById("user-name").textContent =
+                    user.displayName;
+                  document.getElementById("user-email").textContent =
+                    user.email;
                 })
                 .catch((error) => {
                   // Handle Errors here.
