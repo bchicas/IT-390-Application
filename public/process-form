@@ -1,0 +1,18 @@
+<?php
+						$conn = mysqli_connect("helios.vse.gmu.edu", "jviscal", "boogroaz", "jviscal");
+                        			$username = $_POST['user'];
+						$email = $_POST['email'];
+						$password = $_POST['pass1'];
+						$password2 = $_POST['pass2'];
+						if($password == $password2){
+						$sql = "INSERT INTO accounts (EMAIL, NAME, PASSWORD) VALUES ('$email', '$username', '$password')";
+						}
+						else{echo "Passwords do not match!";}
+						if ($conn->query($sql) === TRUE) {
+  						  echo "Data inserted successfully!";
+						} else {
+ 						   echo "Error: " . $sql . "<br>" . $conn->error;
+						}
+
+						mysqli_close($conn);
+						?>

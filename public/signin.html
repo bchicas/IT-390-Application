@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!-- Website Template by freewebsitetemplates.com -->
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Sign in/Sign Up</title>
+    <link rel="stylesheet" href="css/style.css" type="text/css" />
+  </head>
+  <body>
+    <div id="page">
+      <div id="header">
+        <a href="index.html" class="logo"
+          ><img src="images/bookworm.png" alt=""
+        /></a>
+      </div>
+      <div id="body">
+        <div class="content">
+          <div class="section" style="justify-content: center">
+            <script type="module">
+              // Import the functions you need from the SDKs you need
+              import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
+              import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-analytics.js";
+              import { GoogleAuthProvider } from "firebase/auth";
+              import {
+                getAuth,
+                signInWithPopup,
+                GoogleAuthProvider,
+              } from "firebase/auth";
+              // TODO: Add SDKs for Firebase products that you want to use
+              // https://firebase.google.com/docs/web/setup#available-libraries
+
+              // Your web app's Firebase configuration
+              // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+              const firebaseConfig = {
+                apiKey: "AIzaSyCL5XSNiNJ6rZBora7WfhlecToSJO8p8Mo",
+                authDomain: "bookworm-12345.firebaseapp.com",
+                projectId: "bookworm-12345",
+                storageBucket: "bookworm-12345.appspot.com",
+                messagingSenderId: "1015960933719",
+                appId: "1:1015960933719:web:a6e9de27a3d48f3b91da12",
+                measurementId: "G-BSDLSJYQC7",
+              };
+
+              // Initialize Firebase
+              const app = initializeApp(firebaseConfig);
+              const analytics = getAnalytics(app);
+              const provider = new GoogleAuthProvider();
+              const auth = getAuth();
+
+              signInWithPopup(auth, provider)
+                .then((result) => {
+                  // This gives you a Google Access Token. You can use it to access the Google API.
+                  const credential =
+                    GoogleAuthProvider.credentialFromResult(result);
+                  const token = credential.accessToken;
+                  // The signed-in user info.
+                  const user = result.user;
+                  // IdP data available using getAdditionalUserInfo(result)
+                  // ...
+                })
+                .catch((error) => {
+                  // Handle Errors here.
+                  const errorCode = error.code;
+                  const errorMessage = error.message;
+                  // The email of the user's account used.
+                  const email = error.customData.email;
+                  // The AuthCredential type that was used.
+                  const credential =
+                    GoogleAuthProvider.credentialFromError(error);
+                  // ...
+                });
+            </script>
+          </div>
+        </div>
+      </div>
+      <div id="footer">
+        <p>
+          Copyright Team 4 2023 | This page does not gather any personal
+          information
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
