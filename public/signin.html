@@ -61,44 +61,6 @@
                 appId: "1:1015960933719:web:a6e9de27a3d48f3b91da12",
                 measurementId: "G-BSDLSJYQC7",
               };
-              //sign in / sign up form (adjustable)
-              <div class="section" style="justify-content: center;">
-					<p>
-						<p>Already a member? Please sign in:</p>
-
-						<form id="frm1" action="/action_page.php">
-						Username: <input type="text" name="user"><br><br>
-						Password: <input type="password" name="pass"><br><br>
- 						 <input type="button" onclick="signIn()" value="Sign In"><br><br>
-						  <a href="forgotLogin.html">Forgot username or password?</a>
-						  <a href="changePass.html">Reset Password</a>
-
-						</form>
-
-						<script>
-							function signIn() {
-  							document.getElementById("frm1").submit();
-								}
-						</script>	
-					</p>
-					<p>
-						<p>Making a new account? Sign up here:</p>
-
-						<form id="frm2" method="post" action="process-form.php">
-  						New Username: <input type="text" name="user"><br><br>
-						Email:     <input type="text" name="email"><br><br>
-						New Password: <input type="password" name="pass1"><br><br>
-						Re-enter Password: <input type="password" name="pass2"><br><br>
- 						 <input type="button" onclick="signUp()" value="Sign Up">
-						</form>
-
-						<script>
-							function signUp() {
-  							document.getElementById("frm2.php").submit();
-								}
-						</script>	
-					</p>
-				</div>
               // Initialize Firebase
               const app = initializeApp(firebaseConfig);
               const analytics = getAnalytics(app);
