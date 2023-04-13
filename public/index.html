@@ -36,6 +36,8 @@
                   signInWithPopup,
                   signOut,
                   GoogleAuthProvider,
+                  setPersistence,
+                  browserSessionPersistence,
                 } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js";
                 // TODO: Add SDKs for Firebase products that you want to use
                 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -57,6 +59,19 @@
                 const analytics = getAnalytics(app);
                 const provider = new GoogleAuthProvider();
                 const auth = getAuth();
+
+                setPersistence(auth, browserSessionPersistence)
+                  .then(() => {
+                    // Existing and future Auth states are now persisted in the current
+                    // session only. Closing the window would clear any existing state even
+                    // if a user forgets to sign out.
+                    // ...
+                  })
+                  .catch((error) => {
+                    // Handle Errors here.
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                  });
                 const userInfoDiv = document.getElementById("user-info");
 
                 // Listen for changes in the authentication state of the user
@@ -94,6 +109,13 @@
                     // User is signed out
                     signInOutButton.textContent = "Sign In";
                     signInOutButton.addEventListener("click", () => {
+                      const provider = new GoogleAuthProvider();
+
+                      // Set the provider to prompt the user to select an account
+                      provider.setCustomParameters({
+                        prompt: "select_account",
+                      });
+
                       signInWithPopup(auth, provider)
                         .then((result) => {
                           // This gives you a Google Access Token. You can use it to access the Google API.
