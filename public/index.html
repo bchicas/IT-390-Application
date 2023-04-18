@@ -202,7 +202,19 @@
                       const title = books[i].title;
                       const coverId = books[i].cover_id;
                       const coverUrl = `https://covers.openlibrary.org/b/id/${coverId}-M.jpg`; // Book cover image URL
-                      recommendedBooks.push({ title, coverUrl, coverId }); // Store title and coverUrl as an object
+                      const author = books[i].authors
+                        ? books[i].authors[0].name
+                        : "Unknown"; // Get the author, or use "Unknown" as default
+                      const year = books[i].first_publish_year
+                        ? books[i].first_publish_year
+                        : "Unknown"; // Get the year of publication, or use "Unknown" as default
+                      recommendedBooks.push({
+                        title,
+                        coverUrl,
+                        coverId,
+                        author,
+                        year,
+                      }); // Store title, coverUrl, author, and year as an object
                     }
                     displayRecommendations(recommendedBooks); // Call displayRecommendations() with the array of recommended books
                   })
@@ -221,6 +233,8 @@
                   const img = document.createElement("img");
                   const title = book.title;
                   const cover = book.coverId;
+                  const year = book.year;
+                  const author = book.author;
 
                   const words = title.split(/\s+/);
 
@@ -239,7 +253,11 @@
 
                   link.href = `ViewABook.html?title=${encodeURIComponent(
                     title
-                  )}&cover=${encodeURIComponent(cover)}`;
+                  )}&cover=${encodeURIComponent(
+                    cover
+                  )}&year=${encodeURIComponent(
+                    year
+                  )}&author=${encodeURIComponent(author)}`;
                   img.src = book.coverUrl;
                   img.alt = "";
                   link.appendChild(img);
