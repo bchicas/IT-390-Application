@@ -231,11 +231,11 @@
                       const bookItem = document.createElement("ul");
                       bookItem.style.border = "1px solid black";
                       bookItem.innerHTML = `
-								  <h3>${book.title}</h3>
-								  <p>Author: ${book.authors[0].name}</p>
-								  <p>Published year: ${book.first_publish_year}</p>
-                  <img src="https://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg" alt="Book cover">
-								`;
+    <h3><a href="ViewABook.html?title=${book.title}&author=${book.authors[0].name}&year=${book.first_publish_year}&cover=${book.cover_id}">${book.title}</a></h3>
+    <p>Author: ${book.authors[0].name}</p>
+    <p>Published year: ${book.first_publish_year}</p>
+    <img src="https://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg" alt="Book cover">
+  `;
                       booksList.appendChild(bookItem);
                     });
                   })

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!-- Website Template by freewebsitetemplates.com -->
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>The Hunger Games</title>
+    <link rel="stylesheet" href="css/style.css" type="text/css" />
+  </head>
+  <body>
+    <div id="page">
+      <div id="header">
+        <a href="index.html" class="logo"
+          ><img src="images/bookworm.png" alt=""
+        /></a>
+        <div class="navigation">
+          <ul class="primary">
+            <li>
+              <a href="index.html">home</a>
+            </li>
+            <li>
+              <a href="about.html">about</a>
+            </li>
+          </ul>
+          <ul class="secondary">
+            <li>
+              <a href="browse.html">browse</a>
+            </li>
+            <li>
+              <a href="signIn-Up.html">Sign In/Up</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div id="body">
+        <div class="content">
+          <div class="aside">
+            <img src="images/hungergames.jpg" alt="" width="450px" />
+            <div class="aside">
+          <h3>The Hunger Games</h3>
+          <p>Suzanne Collins</p>
+          <h3>Description</h3>
+          <p>
+            Winning means fame and fortune. Losing means certain death. The
+            Hunger Games have begun. . . . In the ruins of a place once known as
+            North America lies the nation of Panem, a shining Capitol surrounded
+            by twelve outlying districts. The Capitol is harsh and cruel and
+            keeps the districts in line by forcing them all to send one boy and
+            one girl between the ages of twelve and eighteen to participate in
+            the annual Hunger Games, a fight to the death on live TV.
+            Sixteen-year-old Katniss Everdeen regards it as a death sentence
+            when she steps forward to take her sister's place in the Games. But
+            Katniss has been close to dead before-and survival, for her, is
+            second nature. Without really meaning to, she becomes a contender.
+            But if she is to win, she will have to start making choices that
+            weigh survival against humanity and life against love.
+          </p>
+          <h3>Length</h3>
+          <p>374 Pages</p>
+          <h3>Score</h3>
+          <p>~~~~~~INSERT SCORE~~~~~~</p>
+          <h3>Where To Buy</h3>
+          <p>
+            <a href="https://www.amazon.com/Hunger-Games-Book/dp/0439023483"
+              >Buy on Amazon</a
+            >
+          </p>
+          <hr />
+          <h3>Comments</h3>
+          <p>~~~~~~COMMENT1~~~~~~</p>
+          <p>~~~~~~COMMENT2~~~~~~</p>
+          <p>~~~~~~COMMENT3~~~~~~</p>
+        </div>
+      </div>
+      <div id="footer">
+        <p>
+          Copyright Team 4 2023 | This page does not gather any personal
+          information
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
