@@ -157,36 +157,18 @@
             <p>Welcome, <span id="user-name"></span>!</p>
             <p>Your email is: <span id="user-email"></span></p>
           </div>
+          <label for="genre-select">Select your favorite genre:</label>
+          <select id="genre-select">
+            <option value="fantasy">Fantasy</option>
+            <option value="sci-fi">Science fiction</option>
+            <option value="romance">Romance</option>
+            <option value="mystery">Mystery</option>
+            <option value="fiction">Fiction</option>
+            <option value="horror">Horror</option>
+            <option value="classic">Classic</option>
+            <option value="biography">Biography</option>
+          </select>
         </div>
-        <div class="body">
-          <div class="bookdisplay">
-            <h2><a href="browse.html">top books this week</a></h2>
-            <ul>
-              <li>
-                <a href="ViewABook.html"
-                  ><img src="images/happy-days.jpg" alt=""
-                /></a>
-              </li>
-              <li>
-                <a href="ViewABook.html"
-                  ><img src="images/tourist.jpg" alt=""
-                /></a>
-              </li>
-              <li>
-                <a href="ViewABook.html"
-                  ><img src="images/out-fairytale.jpg" alt=""
-                /></a>
-              </li>
-              <li>
-                <a href="ViewABook.html"
-                  ><img src="images/philip.jpg" alt=""
-                /></a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <br />
-        <br />
         <div class="body">
           <div class="bookdisplay">
             <h2><a href="browse.html">recommended for you</a></h2>
@@ -199,6 +181,18 @@
               // Function to get book recommendations based on user's favorite genre
               function getRecommendations() {
                 const recommendedBooks = [];
+                const genreSelect = document.getElementById("genre-select"); // Get the <select> element
+                genreSelect.addEventListener("change", () => {
+                  const recommendedBooksList = document.getElementById(
+                    "recommendedBooksList"
+                  );
+                  recommendedBooksList.innerHTML = ""; // Clear the contents of the <ul> element
+                  const userGenre = genreSelect.value;
+                  localStorage.setItem("userGenre", userGenre);
+                  getRecommendations();
+                });
+                const userGenre =
+                  localStorage.getItem("userGenre") || "Fiction"; // Get the selected genre from localStorage, or use "Fiction" as default
                 const apiUrl = `https://openlibrary.org/subjects/${userGenre.toLowerCase()}.json?limit=4`; // API endpoint for genre-based books
                 fetch(apiUrl)
                   .then((response) => response.json())
@@ -220,6 +214,7 @@
                 const recommendedBooksList = document.getElementById(
                   "recommendedBooksList"
                 ); // Get the <ul> element
+                recommendedBooksList.innerHTML = "";
                 recommendedBooks.forEach((book) => {
                   const listItem = document.createElement("li");
                   const link = document.createElement("a");
