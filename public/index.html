@@ -128,8 +128,6 @@
                           // ...
                           document.getElementById("user-name").textContent =
                             user.displayName;
-                          document.getElementById("user-email").textContent =
-                            user.email;
                         })
                         .catch((error) => {
                           // Handle Errors here.
@@ -159,8 +157,9 @@
           </div>
           <label for="genre-select">Select your favorite genre:</label>
           <select id="genre-select">
+            <option value=""></option>
             <option value="fantasy">Fantasy</option>
-            <option value="sci-fi">Science fiction</option>
+            <option value="sci-fi">Science Fiction</option>
             <option value="romance">Romance</option>
             <option value="mystery">Mystery</option>
             <option value="fiction">Fiction</option>

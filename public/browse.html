@@ -4,7 +4,7 @@
   function getbooks() {
     document.getElementById("output").innerHTML = "";
     fetch(
-      "http://openlibrary.org/search.json?q=" +
+      "https://openlibrary.org/search.json?q=" +
         document.getElementById("input").value
     )
       .then((a) => a.json())
@@ -22,7 +22,7 @@
             "<p>Published Year: " +
             response.docs[i].first_publish_year +
             "</p>" +
-            "<br><img src='http://covers.openlibrary.org/b/olid/" +
+            "<br><img src='https://covers.openlibrary.org/b/olid/" +
             bookCoverId +
             "-M.jpg'><br>";
         }
@@ -130,8 +130,6 @@
                     // Update the user's name and email in the #user-info div
                     document.getElementById("user-name").textContent =
                       user.displayName;
-                    document.getElementById("user-email").textContent =
-                      user.email;
                   } else {
                     // User is signed out, hide the #user-info div
                     userInfoDiv.style.display = "none";
