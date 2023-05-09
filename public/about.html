@@ -5,6 +5,52 @@
     <meta charset="UTF-8" />
     <title>About</title>
     <link rel="stylesheet" href="css/style.css" type="text/css" />
+    <style>
+      .container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin-top: 50px;
+      }
+
+      .image-container {
+        position: relative;
+        margin: 10px;
+        width: 200px;
+        height: 200px;
+        overflow: hidden;
+        border: 1px solid black;
+      }
+
+      .image {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .image-text {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: rgba(0, 0, 0, 2);
+        color: white;
+        padding: 10px;
+        transform: translateY(100%);
+        transition: transform 0.5s ease;
+      }
+
+      .image-container:hover .image {
+        transform: scale(1.1);
+      }
+
+      .image-container:hover .image-text {
+        transform: translateY(0%);
+      }
+    </style>
   </head>
   <body>
     <div id="page">
@@ -155,6 +201,44 @@
           <div id="user-info">
             <p>Welcome, <span id="user-name"></span>!</p>
           </div>
+          <h3>About Us</h3>
+          <div class="container">
+            <div class="image-container">
+              <img src="images/Bryan_CM.jpg" alt="Image 1" class="image" />
+              <div class="image-text">
+                <h3>Bryan C.M.</h3>
+                <p>Main Developer</p>
+              </div>
+            </div>
+            <div class="image-container">
+              <img src="images/Emilio.png" alt="Image 2" class="image" />
+              <div class="image-text">
+                <h3>Emilio V.</h3>
+                <p>Pruduct Owner</p>
+              </div>
+            </div>
+            <div class="image-container">
+              <img src="images/Luke.png" alt="Image 3" class="image" />
+              <div class="image-text">
+                <h3>Luke W.</h3>
+                <p>Product Manager</p>
+              </div>
+            </div>
+            <div class="image-container">
+              <img src="images/Brian_L.jpg" alt="Image 4" class="image" />
+              <div class="image-text">
+                <h3>Brian L.</h3>
+                <p>Quality Assurance</p>
+              </div>
+            </div>
+            <div class="image-container">
+              <img src="images/Hannah.jpg" alt="Image 5" class="image" />
+              <div class="image-text">
+                <h3>Hannah O.</h3>
+                <p>Front-End Dev</p>
+              </div>
+            </div>
+          </div>
           <h3>About Our Website</h3>
           <p>
             This website is a project created by IT 390 students. The website is
@@ -169,11 +253,12 @@
             and are looking for more to read. The website show books recommended
             based on preferences. People are able to access this website to look
             for books to read.
-            <br><br>
-            Sites like Goodreads have 125 million members, 3.5 billion books, and 430 million monthly page views;
-            this site is on the smaller side of things, connecting new readers who haven't picked up a book
-            in a long time to getback into the habit. We connect you with a selection of good first books to dive into
-            as a reader starting your journey.
+            <br /><br />
+            Sites like Goodreads have 125 million members, 3.5 billion books,
+            and 430 million monthly page views; this site is on the smaller side
+            of things, connecting new readers who haven't picked up a book in a
+            long time to getback into the habit. We connect you with a selection
+            of good first books to dive into as a reader starting your journey.
           </p>
           <h3>Disclaimer</h3>
           <p>
