@@ -11,20 +11,42 @@
       .then((response) => {
         for (var i = 0; i < 8; i++) {
           var bookCoverId = response.docs[i].cover_edition_key;
-          document.getElementById("output").innerHTML +=
+          var cover = response.docs[i].cover_i;
+          var bookTitle = response.docs[i].title;
+          var bookAuthor = response.docs[i].author_name[0];
+          var bookYear = response.docs[i].first_publish_year;
+          var bookCoverUrl =
+            "https://covers.openlibrary.org/b/olid/" + bookCoverId + "-M.jpg";
+          var viewUrl =
+            "viewabook.html?title=" +
+            encodeURIComponent(bookTitle) +
+            "&author=" +
+            encodeURIComponent(bookAuthor) +
+            "&year=" +
+            encodeURIComponent(bookYear) +
+            "&cover=" +
+            encodeURIComponent(cover);
+
+          // Generate the HTML for each book item
+          var bookItemHtml =
             "<ul class='book-item'>" +
-            "<h3>" +
-            response.docs[i].title +
-            "</h3>" +
+            "<h3><a href='" +
+            viewUrl +
+            "'>" +
+            bookTitle +
+            "</a></h3>" +
             "<p>Author: " +
-            response.docs[i].author_name[0] +
+            bookAuthor +
             "</p>" +
             "<p>Published Year: " +
-            response.docs[i].first_publish_year +
+            bookYear +
             "</p>" +
-            "<br><img src='https://covers.openlibrary.org/b/olid/" +
-            bookCoverId +
-            "-M.jpg'><br>";
+            "<br><img src='" +
+            bookCoverUrl +
+            "'><br>" +
+            "</ul>";
+
+          document.getElementById("output").innerHTML += bookItemHtml;
         }
       });
   }
